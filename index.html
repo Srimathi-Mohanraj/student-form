@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STUDENT FORM</title>
+</head>
+
+<body>
+  <h1>Student  Form</h1>
+  <form action="javascript:void(0)"></form>
+  <table border="1">
+    <tr>
+      <td>
+        <label>
+      <label>NAME:</label></label>
+      </td>
+      <td><input type="text" id="inputname"></td>
+    </tr>
+    <tr>
+      <td><label>
+     <label >AGE:</label>
+      </label></td>
+      <td><input type="text" id="inputage"></td>
+    </tr>
+    <tr>
+      <td>
+    <label>GENDER:</label>
+      </td>
+      <td ><input type="radio" name="gender" value="male" id="inputmale" style="cursor: pointer;">Male
+        <input type="radio" name="gender" value="Female" id="inputfemale" style="cursor: pointer;">Female
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Course</label>
+      </td>
+      <td>
+        <select id="inputcourse">
+          <option value="Javascript">Javascript</option>
+          <option value="React">React.JS</option>
+          <option value="Node.Js">Node.Js</option>
+          <option value="MongoDB">MongoDB</option>
+        </select>
+
+      </td>
+    </tr>
+    <tr>
+      <td><label>Email
+      </label></td>
+      <td>
+        <input type="email" id="inputemail">
+      </td>
+    </tr>
+    <tr >
+      
+      <td colspan="2" align="center" style="background-color: rgb(96, 187, 167);"> 
+        <button 
+        style="background-color: rgb(96, 187, 167);border: none;
+        cursor: pointer;" id="btn">Submit</button>
+
+      </td>
+
+    </tr>
+  </table>
+  <br>
+  <table border="1" id="form">
+    <tr>
+      <th>NAME</th>
+      <th>AGE</th>
+      <th>GENDER</th>
+      <th>COURSE</th>
+      <th>EMAIL</th>
+      <th>ACTION</th>
+    </tr>
+  </table>
+
+  <script>
+    var inputname = document.getElementById("inputname")
+    var inputage = document.getElementById("inputage")
+    var inputmale = document.getElementById("inputmale")
+    var inputfemale = document.getElementById("inputfemale")
+    var inputcourse = document.getElementById("inputcourse")
+    var inputemail = document.getElementById("inputemail")
+    var btn = document.getElementById("btn")
+    var from = document.getElementById("form")
+
+    btn.addEventListener("click",function(){
+      var tr = document.createElement("tr")
+
+      //create and append name cell
+      var tdname = document.createElement("td")
+     tdname.textContent = inputname.value
+    tr.append(tdname)
+    form.append(tr)
+
+  //creae and append age cell
+  var tdage = document.createElement("td")
+  tdage.textContent = inputage.value
+  tr.append(tdage)
+  form.append(tr)
+
+  // create and append gender cell
+ var tdgender = document.createElement("td")
+ tdgender.textContent = inputmale.checked? "male":"Female"
+ tr.append(tdgender)
+ form.append(tr)
+
+//create and append course cell
+
+var tdcourse = document.createElement("td")
+tdcourse.textContent = inputcourse.value
+tr.append(tdcourse)
+form.append(tr)
+
+//create and append email cell
+
+var tdemail = document.createElement("td")
+tdemail.textContent = inputemail.value
+tr.append(tdemail)
+form.append(tr)
+
+//create action and delete cell
+
+var tdaction = document.createElement("td")
+tdaction.innerHTML = '<button onclick="deleteRow(event)" style="background-color:red;cursor:pointer">Delete</button>'
+tr.append(tdaction)
+form.append(tr)
+
+ // Clear the input fields after submission
+      inputname.value = '';
+      inputage.value = '';
+      inputmale.checked = false;
+      inputfemale.checked = false;
+      inputcourse.selectedIndex = 0;
+      inputemail.value = '';
+})
+
+//function to delete row
+function deleteRow(event){
+   var row = event.target.closest("tr")
+   if(row){
+    row.remove()
+   }
+}
+
+  </script>
+</body>
+
+</html>
